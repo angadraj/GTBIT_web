@@ -1,0 +1,10 @@
+/* https://developer.chrome.com/extensions/getstarted */
+body{
+    background-color:beige; 
+}
+p{
+    background-color: aqua;
+}
+/* html{
+    background:honeydew;
+}  */
