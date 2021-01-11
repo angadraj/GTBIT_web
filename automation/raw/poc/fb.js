@@ -25,16 +25,26 @@ let url, pwd, user;
         waitUntil: "networkidle2"
     });
 
-     tab.setDefaultNavigationTimeout(60000);
+    tab.setDefaultNavigationTimeout(60000);
     await tab.waitForSelector("#email");
-    await tab.type("#email", user, { delay: 200 });
-    await tab.type("input[data-testid='royal_pass']", pwd, { delay: 200 });
+    await tab.type("#email", user, {
+        delay: 200
+    });
+    await tab.type("input[data-testid='royal_pass']", pwd, {
+        delay: 200
+    });
     await tab.click("#u_0_b");
     console.log("User logged in");
-    await tab.goto(`https://www.facebook.com/${pageName}/`, { waitUntil: "networkidle2" });
+    await tab.goto(`https://www.facebook.com/${pageName}/`, {
+        waitUntil: "networkidle2"
+    });
     // multiple url  change
-    await Promise.all([tab.click("div[data-key='tab_posts']"), tab.waitForNavigation({ waitUntil: "networkidle2" })]);
-    await tab.waitForNavigation({ waitUntil: "networkidle2" });
+    await Promise.all([tab.click("div[data-key='tab_posts']"), tab.waitForNavigation({
+        waitUntil: "networkidle2"
+    })]);
+    await tab.waitForNavigation({
+        waitUntil: "networkidle2"
+    });
     let idx = 0;
     do {
         // _1xnd> ._4-u2.4-u8
@@ -43,10 +53,14 @@ let url, pwd, user;
         let allposts = await tab.$$("#pagelet_timeline_main_column ._1xnd>._4-u2._4-u8");
         let cPost = allposts[idx];
         let cPostLike = await cPost.$("._666k ._8c74 a");
-        await cPostLike.click({ delay: 200 });
+        await cPostLike.click({
+            delay: 200
+        });
         idx++;
 
-        await tab.waitForSelector(".uiMorePageLoader", { hidden: true });
+        await tab.waitForSelector(".uiMorePageLoader", {
+            hidden: true
+        });
 
     } while (idx < postToLike)
 
